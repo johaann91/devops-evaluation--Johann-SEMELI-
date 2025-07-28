@@ -1,0 +1,12 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Installer Apache
+      apt:
+        name: apache2
+        update_cache: yes
+        state: present
+    - name: Déployer page personnalisée
+      copy:
+        content: "<h1>Hello depuis Ansible - Johann SEMELI</h1>"
+        dest: /var/www/html/index.html
